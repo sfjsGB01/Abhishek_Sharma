@@ -1,0 +1,22 @@
+{
+  "employees": [
+    {
+      "id": "100",
+      "firstName": "Sreekanth",
+      "lastName": "M E",
+      "city": "Bangalore"
+    },
+    {
+      "id": "200",
+      "firstName": "Abhishek",
+      "lastName": "Sharma",
+      "city": "Delhi"
+    },
+    {
+      "id": "300",
+      "firstName": "Saba",
+      "lastName": "H",
+      "city": "Chennai"
+    }
+  ]
+}
