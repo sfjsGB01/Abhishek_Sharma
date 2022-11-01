@@ -1,19 +1,26 @@
 import React from "react";
+import axios from "./util/axiosConfig";
+import AddStore from "./AddStore";
+import UpdateItem from "./UpdateItem";
+import { useAuthContext } from "./hooks/UseAuth";
+import Header from "./Header";
 
 import { useNavigate } from "react-router-dom";
 
 const Store = () => {
-  const navigate = useNavigate();
+  const [showAddForm,setShowAddForm] = React.useState(false)
 
-  const viewItem = () => {
-    navigate("/home/item");
-  };
+  const addStore = ()=>{
+    setShowAddForm(true)
+  }
 
   return (
     <div>
+      <Header />
       <h1>Stores</h1>
 
-      <input type="button" value="Add" />
+      <input type="button" value="Add" onClick={addStore} />
+      {showAddForm? <AddStore setShowAddForm={setShowAddForm} /> : null}
 
       <table border="1">
         <tbody>
@@ -27,18 +34,7 @@ const Store = () => {
 
           {stores.map((store) => {
             return (
-              <tr key={store?.id}>
-                <td>{store?.id}</td>
-                <td>{store?.name}</td>
-                <td>{store?.owner}</td>
-                <td>
-                  <input type="button" value="View" onClick={viewItem} />
-                  &nbsp;
-                  <input type="button" value="Update" />
-                  &nbsp;
-                  <input type="button" value="Delete" />
-                </td>
-              </tr>
+              <UpdateItem store={store} key={store?.id}/>
             );
           })}
         </tbody>
